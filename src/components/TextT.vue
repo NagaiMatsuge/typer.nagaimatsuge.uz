@@ -135,7 +135,8 @@ export default {
   name: "TextT",
   data() {
     return {
-      text: "By so delight of showing neither ",
+      text:
+        "ZTouch typing (also called touch type or touch keyboarding) is a style of typing. Although the phrase refers to typing without using the sense of sight to find the keys specifically, a touch typist will know their location on the keyboard through muscle memory the term is often used to refer to a specific form of touch typing that involves placing the eight fingers in a horizontal row along the middle of the keyboard (the home row) and having them reach for specific other keys. (Under this usage, typists who do not look at the keyboard but do not use home row either are referred to as hybrid typists.) Both two handed touch typing and one handed touch typing are possible.",
       index: 0,
       letters: [],
       position: window.innerWidth / 2,
@@ -151,10 +152,10 @@ export default {
     this.start();
     this.handleResize();
     let self = this;
-    window.addEventListener("keydown", function (ev) {
+    window.addEventListener("keydown", function(ev) {
       if (
         (ev.keyCode > 31 && ev.keyCode < 37) ||
-        (ev.keyCode > 40 && ev.keyCode < 90) ||
+        (ev.keyCode > 40 && ev.keyCode < 91) ||
         (ev.keyCode > 185 && ev.keyCode < 223)
       ) {
         if (ev.keyCode == 32) {
@@ -164,7 +165,7 @@ export default {
         self.move(ev);
       }
     });
-    window.addEventListener("resize", function () {
+    window.addEventListener("resize", function() {
       self.handleResize();
     });
   },
@@ -203,7 +204,7 @@ export default {
     start() {
       this.letters = [...this.text];
       this.index = 0;
-      this.$nextTick(function () {
+      this.$nextTick(function() {
         this.spans = document.getElementsByTagName("span");
         this.spans[0].classList.add("current");
       });
