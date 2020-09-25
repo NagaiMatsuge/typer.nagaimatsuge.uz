@@ -77,14 +77,16 @@ export default {
       this.updateScores();
     },
     stopTyping() {
-      if (this.$store.getters.getEnableT) {
+      if (this.$store.getters.getEnableT && this.newText.length) {
         document.getElementById("toggler_typing").click();
       }
     },
     updateText() {
-      this.setNewText(this.newText);
-      this.newText = "";
-      this.$emit("textChanged");
+      if (this.newText.length) {
+        this.setNewText(this.newText);
+        this.newText = "";
+        this.$emit("textChanged");
+      }
     },
   },
   components: {
@@ -108,6 +110,7 @@ export default {
   padding: 20px;
   border-radius: 10px;
   margin-bottom: 20px;
+  box-shadow: 0 4px 7px var(--shadow-color);
 }
 .provide_text {
   background: var(--primary-color);
@@ -116,10 +119,12 @@ export default {
 .provide_text_content {
   background: var(--secondary-color);
   padding: 15px 20px;
+  border-radius: 5px;
   width: 65%;
   margin: auto;
   display: flex;
   justify-content: space-between;
+  box-shadow: 0 4px 7px var(--shadow-color);
 }
 .provide_text_content button {
   padding: 10px 15px;
@@ -127,8 +132,21 @@ export default {
   border-radius: 5px;
   margin-left: 10px;
   font-size: 18px;
-  background: purple;
   color: white;
+  background-image: linear-gradient(
+    -180deg,
+    rgb(83, 86, 89) 0%,
+    rgb(66, 69, 73) 90%
+  ) !important;
+  border-color: rgb(24, 26, 31) !important;
+}
+.provide_text_content button:hover {
+  background-image: linear-gradient(
+    -180deg,
+    rgba(83, 86, 89, 0.9) 0%,
+    rgba(66, 69, 73, 0.9) 90%
+  ) !important;
+  border-color: rgb(24, 26, 31) !important;
 }
 .input_field {
   flex: 1;
@@ -143,6 +161,7 @@ export default {
   border: none;
   background: var(--secondary-color);
   color: var(--opposite-color);
+  font-size: 20px;
 }
 .scores_information {
   max-width: 400px;
@@ -184,11 +203,24 @@ li:nth-last-child(1) {
   height: 100%;
   padding: 10px 10px;
   border: none;
-  background: purple;
   color: white;
   border-radius: 4px;
   font-size: 18px;
   margin-left: 10px;
+  background-image: linear-gradient(
+    -180deg,
+    rgb(83, 86, 89) 0%,
+    rgb(66, 69, 73) 90%
+  ) !important;
+  border-color: rgb(24, 26, 31) !important;
+}
+.clear_all:hover {
+  background-image: linear-gradient(
+    -180deg,
+    rgba(83, 86, 89, 0.9) 0%,
+    rgba(66, 69, 73, 0.9) 90%
+  ) !important;
+  border-color: rgb(24, 26, 31) !important;
 }
 @media only screen and (max-width: 768px) {
   .scores_wrapper {

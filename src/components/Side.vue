@@ -72,6 +72,8 @@ export default {
   background: var(--secondary-color);
   color: var(--opposite-color);
   text-align: center;
+  box-shadow: 0 4px 7px var(--shadow-color);
+  border-radius: 5px;
 }
 .side_wrapper h3 {
   font-size: 30px;

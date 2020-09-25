@@ -1839,6 +1839,7 @@ export default {
   color: var(--opposite-color);
   display: flex;
   justify-content: center;
+  box-shadow: inset 0 4px 7px var(--shadow-color);
 }
 .text {
   width: 40%;

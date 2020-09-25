@@ -368,17 +368,20 @@ export default {
   --secondary-color: #f6f8fa;
   --opposite-color: rgb(49, 54, 63);
   --mistake-color: red;
+  --shadow-color: gray;
 }
 .dark {
   --primary-color: #24292e;
   --secondary-color: rgb(49, 54, 63);
   --opposite-color: white;
   --mistake-color: red;
+  --shadow-color: black;
 }
 .main_t {
   background: var(--secondary-color);
   color: var(--opposite-color);
   padding: 20px;
+  box-shadow: inset 0 4px 7px var(--shadow-color);
 }
 .mode_toggler svg {
   width: 50px;
