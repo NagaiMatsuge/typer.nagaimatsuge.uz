@@ -12,6 +12,7 @@ export default {
     max_time: 120,
     text: texts[Math.floor(Math.random() * 5) + 1],
     enableT: false,
+    custom_text: false,
   },
   actions: {},
   mutations: {
@@ -39,6 +40,9 @@ export default {
     changeToNewText(state) {
       state.text = texts[Math.floor(Math.random() * 5) + 1];
     },
+    toggleCustomText(state) {
+      state.custom_text = true;
+    },
   },
   getters: {
     getScores(state) {
@@ -48,6 +52,9 @@ export default {
         return [];
       }
     },
+    getCustomText(state) {
+      return state.custom_text;
+    },
     getMaxTime(state) {
       return state.max_time;
     },
@@ -56,9 +63,6 @@ export default {
     },
     getEnableT(state) {
       return state.enableT;
-    },
-    getSmth(state) {
-      return state.smth;
     },
   },
 };

@@ -76,7 +76,12 @@ export default {
     },
   },
   methods: {
-    ...mapMutations(["removeScores", "updateScores", "setNewText"]),
+    ...mapMutations([
+      "removeScores",
+      "updateScores",
+      "setNewText",
+      "toggleCustomText",
+    ]),
     delete_score(index) {
       this.removeScores(index);
       window.localStorage.setItem("scores", JSON.stringify(this.scores));
@@ -87,12 +92,19 @@ export default {
     },
     stopTyping() {
       if (this.$store.getters.getEnableT) {
+        if (!this.notify) {
+          this.message =
+            "Dont forget to click on power button on top left corner to enable typing";
+          this.notify_type = "primary";
+          this.show_notify();
+        }
         document.getElementById("toggler_typing").click();
       }
     },
     updateText() {
       if (this.newText.length > 30) {
         this.setNewText(this.newText);
+        this.toggleCustomText();
         this.newText = "";
         this.$emit("textChanged");
       } else {

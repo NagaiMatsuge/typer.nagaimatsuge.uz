@@ -75,7 +75,9 @@ export default {
         window.localStorage.setItem("scores", JSON.stringify(this.scores));
         this.updateScores();
       }
-      this.changeToNewText();
+      if (!this.$store.getters.getCustomText) {
+        this.changeToNewText();
+      }
       this.time = 0;
       this.speed = 0;
       this.errorRate = 0;
