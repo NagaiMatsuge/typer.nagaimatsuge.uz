@@ -45,7 +45,7 @@ export default {
         this.errorRate = (this.mistakes * 100) / this.index;
       }, 2000);
     },
-    ...mapMutations(["updateScores", "setNewText"]),
+    ...mapMutations(["updateScores", "changeToNewText"]),
     start() {
       this.timer();
       this.speedChecker();
@@ -75,8 +75,7 @@ export default {
         window.localStorage.setItem("scores", JSON.stringify(this.scores));
         this.updateScores();
       }
-      // let text = texts[Math.floor(Math.random() * 5) + 1];
-      // this.setNewText(text);
+      this.changeToNewText();
       this.time = 0;
       this.speed = 0;
       this.errorRate = 0;

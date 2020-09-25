@@ -268,14 +268,12 @@ export default {
       extra: 0,
       wordWidth: window.innerWidth > 1600 ? 32 : 20,
       show_notify: false,
+      text: this.$store.getters.getText,
     };
   },
   computed: {
     enableT() {
       return this.$store.getters.getEnableT;
-    },
-    text() {
-      return this.$store.getters.getText;
     },
   },
   mounted() {
@@ -338,6 +336,7 @@ export default {
     },
     stop() {
       this.extra = 0;
+      this.text = this.$store.getters.getText;
       this.handleResize();
       this.$refs.wrapperT.style.left = this.position + "px";
       this.fired = false;
@@ -372,6 +371,7 @@ export default {
       }
     },
     changeText() {
+      this.text = this.$store.getters.getText;
       this.$emit("finish");
     },
   },
