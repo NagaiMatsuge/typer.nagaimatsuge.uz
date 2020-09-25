@@ -1,26 +1,15 @@
 <template>
   <div id="app">
-    <router-view v-if="show" @stop="stop"></router-view>
+    <TextT />
   </div>
 </template>
 
 <script>
+import TextT from "./components/TextT";
 export default {
   name: "App",
-  components: {},
-  data() {
-    return {
-      show: true,
-    };
-  },
-  methods: {
-    stop() {
-      this.show = false;
-      this.$nextTick(() => {
-        this.show = true;
-      });
-      console.log("smth");
-    },
+  components: {
+    TextT,
   },
 };
 </script>

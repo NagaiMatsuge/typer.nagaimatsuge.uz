@@ -234,7 +234,7 @@
           :message="
             'Do not forget to click on power button on top left to start the typer!'
           "
-          :duration="4"
+          :duration="8"
         />
       </div>
       <div class="p-3 text-inside">
@@ -283,6 +283,7 @@ export default {
     window.addEventListener("resize", function() {
       self.handleResize();
     });
+    this.toggleTyping();
     setTimeout(() => {
       this.show_notification();
     }, 2000);
@@ -292,7 +293,7 @@ export default {
       this.show_notify = true;
       setTimeout(() => {
         this.show_notify = false;
-      }, 5000);
+      }, 9000);
     },
     ...mapMutations(["toggleEnableT", "setNewText"]),
     handleResize() {
