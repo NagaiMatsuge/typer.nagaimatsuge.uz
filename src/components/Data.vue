@@ -9,6 +9,7 @@
 </template>
 
 <script>
+// import * as texts from "../data/Data.js";
 import { mapMutations } from "vuex";
 export default {
   name: "Data",
@@ -44,7 +45,7 @@ export default {
         this.errorRate = (this.mistakes * 100) / this.index;
       }, 2000);
     },
-    ...mapMutations(["updateScores"]),
+    ...mapMutations(["updateScores", "setNewText"]),
     start() {
       this.timer();
       this.speedChecker();
@@ -74,6 +75,8 @@ export default {
         window.localStorage.setItem("scores", JSON.stringify(this.scores));
         this.updateScores();
       }
+      // let text = texts[Math.floor(Math.random() * 5) + 1];
+      // this.setNewText(text);
       this.time = 0;
       this.speed = 0;
       this.errorRate = 0;

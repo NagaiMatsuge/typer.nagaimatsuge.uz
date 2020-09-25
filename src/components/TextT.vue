@@ -229,6 +229,14 @@
           </svg>
         </div>
       </div>
+      <div v-if="show_notify">
+        <Notification
+          :message="
+            'Do not forget to click on power button on top left to start the typer!'
+          "
+          :duration="4"
+        />
+      </div>
       <div class="p-3 text-inside">
         <div ref="wrapperT" class="wrapperT">
           <span :key="index" v-for="(letter, index) in letters">{{
@@ -244,6 +252,7 @@
 <script>
 import Data from "./Data.vue";
 import Scores from "./Scores";
+import Notification from "./Notification";
 import { mapMutations } from "vuex";
 export default {
   name: "TextT",
@@ -258,6 +267,7 @@ export default {
       dark_mode: true,
       extra: 0,
       wordWidth: window.innerWidth > 1600 ? 32 : 20,
+      show_notify: false,
     };
   },
   computed: {
@@ -272,12 +282,21 @@ export default {
     this.start();
     this.handleResize();
     let self = this;
-    window.addEventListener("resize", function () {
+    window.addEventListener("resize", function() {
       self.handleResize();
     });
+    setTimeout(() => {
+      this.show_notification();
+    }, 2000);
   },
   methods: {
-    ...mapMutations(["toggleEnableT"]),
+    show_notification() {
+      this.show_notify = true;
+      setTimeout(() => {
+        this.show_notify = false;
+      }, 5000);
+    },
+    ...mapMutations(["toggleEnableT", "setNewText"]),
     handleResize() {
       this.position = window.innerWidth / 2 - this.extra;
       if (this.position > 400) {
@@ -312,7 +331,7 @@ export default {
     start() {
       this.letters = [...this.text];
       this.index = 0;
-      this.$nextTick(function () {
+      this.$nextTick(function() {
         this.spans = document.getElementsByTagName("span");
         this.spans[0].classList.add("current");
       });
@@ -359,6 +378,7 @@ export default {
   components: {
     Data,
     Scores,
+    Notification,
   },
 };
 </script>

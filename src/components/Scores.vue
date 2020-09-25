@@ -18,8 +18,10 @@
             </li>
           </ul>
           <ul v-else>
-            <li>You don't have records yet</li>
-            <li>A little Note: Every record is being saved locally!</li>
+            <li>Click on power button on top left corner to enable typing!</li>
+            <li>Start typing to get your scores here!</li>
+            <li>Every record is being saved locally!</li>
+            <li>Your own text should contain at least 30 chars!</li>
           </ul>
         </div>
       </div>
@@ -42,6 +44,9 @@
         </div>
       </div>
     </div>
+    <div v-if="notify">
+      <Notification :message="message" :type="notify_type" />
+    </div>
     <Footer />
   </div>
 </template>
@@ -49,12 +54,16 @@
 <script>
 import Side from "./Side";
 import Footer from "./Footer";
+import Notification from "./Notification";
 import { mapMutations } from "vuex";
 export default {
   name: "Scores",
   data() {
     return {
       newText: "",
+      notify: false,
+      message: "",
+      notify_type: "primary",
     };
   },
   computed: {
@@ -77,21 +86,34 @@ export default {
       this.updateScores();
     },
     stopTyping() {
-      if (this.$store.getters.getEnableT && this.newText.length) {
+      if (this.$store.getters.getEnableT) {
         document.getElementById("toggler_typing").click();
       }
     },
     updateText() {
-      if (this.newText.length) {
+      if (this.newText.length > 30) {
         this.setNewText(this.newText);
         this.newText = "";
         this.$emit("textChanged");
+      } else {
+        if (!this.notify) {
+          this.message = "Your text should contain at least 30 characters!";
+          this.notify_type = "warning";
+          this.show_notify();
+        }
       }
+    },
+    show_notify() {
+      this.notify = true;
+      setTimeout(() => {
+        this.notify = false;
+      }, 5000);
     },
   },
   components: {
     Side,
     Footer,
+    Notification,
   },
 };
 </script>

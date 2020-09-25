@@ -1,3 +1,4 @@
+// import * as test from "./data/Data.js";
 export default {
   state: {
     scores: JSON.parse(window.localStorage.getItem("scores")),
@@ -46,6 +47,9 @@ export default {
     },
     getEnableT(state) {
       return state.enableT;
+    },
+    getSmth(state) {
+      return state.smth;
     },
   },
 };
