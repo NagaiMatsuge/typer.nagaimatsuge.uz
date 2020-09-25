@@ -1,5 +1,118 @@
 <template>
   <div :class="[dark_mode ? 'dark' : 'light']">
+    <div @click="toggleTyping" id="toggler_typing" class="toggler_typing">
+      <div v-if="!enableT">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          xmlns:xlink="http://www.w3.org/1999/xlink"
+          version="1.1"
+          id="Capa_1"
+          x="0px"
+          y="0px"
+          viewBox="0 0 512 512"
+          style="enable-background: new 0 0 512 512"
+          xml:space="preserve"
+        >
+          <path
+            style="fill: #32d736"
+            d="M256,0C115.3,0,0,115.3,0,256s115.3,256,256,256s256-115.3,256-256S396.7,0,256,0z"
+          />
+          <path
+            style="fill: #0ca656"
+            d="M512,256c0,140.7-115.3,256-256,256V0C396.7,0,512,115.3,512,256z"
+          />
+          <g>
+            <path
+              style="fill: #cae8f9"
+              d="M436,256c0,99.3-80.7,180-180,180S76,355.3,76,256c0-39.3,12.599-76.5,36-107.999   c5.7-7.5,14.399-12.001,24-12.001c6.599,0,12.9,2.1,17.999,6c13.2,9.901,15.901,28.799,6,41.999C144.401,205,136,229.9,136,256   c0,66.301,53.699,120,120,120s120-53.699,120-120c0-26.1-8.401-51-24-72.001c-9.901-13.2-7.2-31.8,6-41.999   c5.099-3.9,11.4-6,17.999-6c9.6,0,18.3,4.501,24,12.001C423.401,179.5,436,216.7,436,256z"
+            />
+            <path
+              style="fill: #cae8f9"
+              d="M286,106v150c0,16.5-13.5,30-30,30s-30-13.5-30-30V106c0-16.5,13.5-30,30-30S286,89.5,286,106z"
+            />
+          </g>
+          <g>
+            <path
+              style="fill: #b7e0f6"
+              d="M256,286V76c16.5,0,30,13.5,30,30v150C286,272.5,272.5,286,256,286z"
+            />
+            <path
+              style="fill: #b7e0f6"
+              d="M436,256c0,99.3-80.7,180-180,180v-60c66.301,0,120-53.699,120-120c0-26.1-8.401-51-24-72.001   c-9.901-13.2-7.2-31.8,6-41.999c5.099-3.9,11.4-6,17.999-6c9.6,0,18.3,4.501,24,12.001C423.401,179.5,436,216.7,436,256z"
+            />
+          </g>
+          <g></g>
+          <g></g>
+          <g></g>
+          <g></g>
+          <g></g>
+          <g></g>
+          <g></g>
+          <g></g>
+          <g></g>
+          <g></g>
+          <g></g>
+          <g></g>
+          <g></g>
+          <g></g>
+          <g></g>
+        </svg>
+      </div>
+      <div v-else>
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          xmlns:xlink="http://www.w3.org/1999/xlink"
+          version="1.1"
+          id="Capa_1"
+          x="0px"
+          y="0px"
+          viewBox="0 0 512 512"
+          style="enable-background: new 0 0 512 512"
+          xml:space="preserve"
+        >
+          <path
+            style="fill: #ff3636"
+            d="M256,0C115.3,0,0,115.3,0,256s115.3,256,256,256s256-115.3,256-256S396.7,0,256,0z"
+          />
+          <path
+            style="fill: #f40000"
+            d="M512,256c0,140.7-115.3,256-256,256V0C396.7,0,512,115.3,512,256z"
+          />
+          <path
+            style="fill: #e7e7e7"
+            d="M226,76v180h60V76H226z M383.2,128.8l-42.299,42.299c46.8,46.8,46.8,122.999,0,169.799  c-21.601,21.601-52.5,33.9-84.901,33.9s-63.3-12.299-84.901-33.9c-46.8-46.8-46.8-122.999,0-169.799L128.8,128.8  c-70.201,70.199-70.201,184.199,0,254.399c33.9,33.9,79.2,52.8,127.2,52.8s93.3-18.9,127.2-52.8  C453.401,312.999,453.401,198.999,383.2,128.8z"
+          />
+          <g>
+            <rect
+              x="256"
+              y="76"
+              style="fill: #d3d3d8"
+              width="30"
+              height="180"
+            />
+            <path
+              style="fill: #d3d3d8"
+              d="M383.2,383.2C349.3,417.1,304,436,256,436v-61.201c32.401,0,63.3-12.299,84.901-33.9   c46.8-46.8,46.8-122.999,0-169.799l42.299-42.3C453.401,198.999,453.401,312.999,383.2,383.2z"
+            />
+          </g>
+          <g></g>
+          <g></g>
+          <g></g>
+          <g></g>
+          <g></g>
+          <g></g>
+          <g></g>
+          <g></g>
+          <g></g>
+          <g></g>
+          <g></g>
+          <g></g>
+          <g></g>
+          <g></g>
+          <g></g>
+        </svg>
+      </div>
+    </div>
     <div class="main_t">
       <div @click="dark_mode = !dark_mode" style="cursor: pointer">
         <div v-if="dark_mode" class="mode_toggler">
@@ -125,18 +238,17 @@
         <Data :mistakes="mistakes" :index="index" @stop="stop" />
       </div>
     </div>
-    <Scores />
+    <Scores @textChanged="changeText" />
   </div>
 </template>
 <script>
 import Data from "./Data.vue";
 import Scores from "./Scores";
+import { mapMutations } from "vuex";
 export default {
   name: "TextT",
   data() {
     return {
-      text:
-        "ZTouch typing (also called touch type or touch keyboarding) is a style of typing. Although the phrase refers to typing without using the sense of sight to find the keys specifically, a touch typist will know their location on the keyboard through muscle memory the term is often used to refer to a specific form of touch typing that involves placing the eight fingers in a horizontal row along the middle of the keyboard (the home row) and having them reach for specific other keys. (Under this usage, typists who do not look at the keyboard but do not use home row either are referred to as hybrid typists.) Both two handed touch typing and one handed touch typing are possible.",
       index: 0,
       letters: [],
       position: window.innerWidth / 2,
@@ -148,28 +260,24 @@ export default {
       wordWidth: window.innerWidth > 1600 ? 32 : 20,
     };
   },
+  computed: {
+    enableT() {
+      return this.$store.getters.getEnableT;
+    },
+    text() {
+      return this.$store.getters.getText;
+    },
+  },
   mounted() {
     this.start();
     this.handleResize();
     let self = this;
-    window.addEventListener("keydown", function(ev) {
-      if (
-        (ev.keyCode > 31 && ev.keyCode < 37) ||
-        (ev.keyCode > 40 && ev.keyCode < 91) ||
-        (ev.keyCode > 185 && ev.keyCode < 223)
-      ) {
-        if (ev.keyCode == 32) {
-          ev.preventDefault();
-        }
-        self.fireStartEvent();
-        self.move(ev);
-      }
-    });
-    window.addEventListener("resize", function() {
+    window.addEventListener("resize", function () {
       self.handleResize();
     });
   },
   methods: {
+    ...mapMutations(["toggleEnableT"]),
     handleResize() {
       this.position = window.innerWidth / 2 - this.extra;
       if (this.position > 400) {
@@ -204,7 +312,7 @@ export default {
     start() {
       this.letters = [...this.text];
       this.index = 0;
-      this.$nextTick(function() {
+      this.$nextTick(function () {
         this.spans = document.getElementsByTagName("span");
         this.spans[0].classList.add("current");
       });
@@ -217,6 +325,35 @@ export default {
       this.mistakes = 0;
       this.spans.forEach((element) => element.removeAttribute("class"));
       this.start();
+    },
+    keyDownRect(ev) {
+      if (
+        (ev.keyCode > 31 && ev.keyCode < 37) ||
+        (ev.keyCode > 40 && ev.keyCode < 91) ||
+        (ev.keyCode > 185 && ev.keyCode < 223)
+      ) {
+        if (ev.keyCode == 32) {
+          ev.preventDefault();
+        }
+        this.fireStartEvent();
+        this.move(ev);
+      }
+    },
+    toggleTyping() {
+      this.toggleEnableT();
+      if (this.enableT) {
+        this.start();
+        this.handleResize();
+        let self = this;
+        window.addEventListener("keydown", self.keyDownRect);
+      } else {
+        let self = this;
+        window.removeEventListener("keydown", self.keyDownRect);
+        this.$emit("finish");
+      }
+    },
+    changeText() {
+      this.$emit("finish");
     },
   },
   components: {
@@ -260,6 +397,17 @@ span {
   justify-content: center;
   align-items: center;
   font-family: sans-serif;
+}
+.toggler_typing {
+  cursor: pointer;
+}
+.toggler_typing svg {
+  position: fixed;
+  top: 10px;
+  left: 70px;
+  width: 50px;
+  height: 50px;
+  z-index: 100;
 }
 .text-inside {
   overflow: hidden;
@@ -324,10 +472,19 @@ span {
     overflow: hidden;
     max-width: 100%;
   }
+  .toggler_typing svg {
+    top: 70px;
+    left: 10px;
+  }
 }
 @media only screen and (min-width: 1600px) {
   .main_t {
     padding: 30px;
+  }
+  .toggler_typing svg {
+    width: 100px;
+    height: 100px;
+    left: 120px;
   }
   .mode_toggler svg {
     width: 100px;

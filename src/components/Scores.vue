@@ -27,6 +27,21 @@
         <Side />
       </div>
     </div>
+    <div class="provide_text">
+      <div class="provide_text_content">
+        <div class="input_field">
+          <input
+            type="text"
+            v-model="newText"
+            @focus="stopTyping"
+            placeholder="Provide your own text..."
+          />
+        </div>
+        <div>
+          <button @click="updateText">Change</button>
+        </div>
+      </div>
+    </div>
     <Footer />
   </div>
 </template>
@@ -37,6 +52,11 @@ import Footer from "./Footer";
 import { mapMutations } from "vuex";
 export default {
   name: "Scores",
+  data() {
+    return {
+      newText: "",
+    };
+  },
   computed: {
     scores() {
       if (this.$store.getters.getScores) {
@@ -47,7 +67,7 @@ export default {
     },
   },
   methods: {
-    ...mapMutations(["removeScores", "updateScores"]),
+    ...mapMutations(["removeScores", "updateScores", "setNewText"]),
     delete_score(index) {
       this.removeScores(index);
       window.localStorage.setItem("scores", JSON.stringify(this.scores));
@@ -55,6 +75,16 @@ export default {
     clear_storage() {
       window.localStorage.clear();
       this.updateScores();
+    },
+    stopTyping() {
+      if (this.$store.getters.getEnableT) {
+        document.getElementById("toggler_typing").click();
+      }
+    },
+    updateText() {
+      this.setNewText(this.newText);
+      this.newText = "";
+      this.$emit("textChanged");
     },
   },
   components: {
@@ -68,7 +98,7 @@ export default {
 .scores_wrapper {
   background: var(--primary-color);
   color: var(--opposite-color);
-  padding: 30px 3%;
+  padding: 30px 10px 0 30px;
   display: flex;
   justify-content: center;
 }
@@ -78,6 +108,41 @@ export default {
   padding: 20px;
   border-radius: 10px;
   margin-bottom: 20px;
+}
+.provide_text {
+  background: var(--primary-color);
+  padding: 20px;
+}
+.provide_text_content {
+  background: var(--secondary-color);
+  padding: 15px 20px;
+  width: 65%;
+  margin: auto;
+  display: flex;
+  justify-content: space-between;
+}
+.provide_text_content button {
+  padding: 10px 15px;
+  border: none;
+  border-radius: 5px;
+  margin-left: 10px;
+  font-size: 18px;
+  background: purple;
+  color: white;
+}
+.input_field {
+  flex: 1;
+  display: flex;
+  align-items: center;
+}
+.input_field input {
+  width: 100%;
+  outline: none;
+  padding: 10px 10px;
+  border-radius: 5px;
+  border: none;
+  background: var(--secondary-color);
+  color: var(--opposite-color);
 }
 .scores_information {
   max-width: 400px;
@@ -128,9 +193,24 @@ li:nth-last-child(1) {
 @media only screen and (max-width: 768px) {
   .scores_wrapper {
     flex-wrap: wrap;
+    padding: 3%;
   }
   .scores_container {
     min-width: 300px;
+  }
+  .provide_text {
+    padding: 3%;
+    padding-bottom: 20px;
+  }
+  .provide_text_content {
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    max-width: 500px;
+  }
+  .provide_text_content .input_field {
+    width: 100%;
+    margin-bottom: 10px;
   }
   .scores_information {
     min-width: 300px;
@@ -157,6 +237,18 @@ li:nth-last-child(1) {
   }
   .scores_title h3 {
     font-size: 50px;
+  }
+  .provide_text_content {
+    width: 55%;
+    padding: 30px;
+  }
+  .provide_text_content input {
+    padding: 20px;
+    font-size: 25px;
+  }
+  .provide_text_content button {
+    padding: 20px;
+    font-size: 30px;
   }
   .clear_all {
     font-size: 30px;

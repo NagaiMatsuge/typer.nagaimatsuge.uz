@@ -15,7 +15,12 @@
     </div>
     <div class="max_time">
       <h3>Max Time</h3>
-      <input type="number" @change="max_time_apply" v-model="max_time" />
+      <input
+        type="number"
+        @focus="stopTyper"
+        @change="max_time_apply"
+        v-model="max_time"
+      />
     </div>
   </div>
 </template>
@@ -51,6 +56,11 @@ export default {
     ...mapMutations(["setMaxTime"]),
     max_time_apply() {
       this.setMaxTime(this.max_time);
+    },
+    stopTyper() {
+      if (this.$store.getters.getEnableT) {
+        document.getElementById("toggler_typing").click();
+      }
     },
   },
 };

@@ -58,20 +58,22 @@ export default {
         (today.getMonth() + 1) +
         "-" +
         today.getDate();
-      let data = {
-        speed: this.speed.toFixed(2),
-        mistakes: this.mistakes,
-        mistakesRate: this.errorRate.toFixed(2),
-        date: date,
-      };
-      this.scores = this.$store.getters.getScores;
-      if (this.scores) {
-        this.scores.unshift(data);
-      } else {
-        this.scores = [data];
+      if (this.speed) {
+        let data = {
+          speed: this.speed.toFixed(2),
+          mistakes: this.mistakes,
+          mistakesRate: this.errorRate.toFixed(2),
+          date: date,
+        };
+        this.scores = this.$store.getters.getScores;
+        if (this.scores) {
+          this.scores.unshift(data);
+        } else {
+          this.scores = [data];
+        }
+        window.localStorage.setItem("scores", JSON.stringify(this.scores));
+        this.updateScores();
       }
-      window.localStorage.setItem("scores", JSON.stringify(this.scores));
-      this.updateScores();
       this.time = 0;
       this.speed = 0;
       this.errorRate = 0;
